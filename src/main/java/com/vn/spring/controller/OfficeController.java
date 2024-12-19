@@ -32,6 +32,7 @@ public class OfficeController {
 				for (XWPFRun xwpfRun : xwpfParagraph.getRuns()) {
 					String docText = xwpfRun.getText(0);
 					System.out.println(docText);
+//					docText = docText.replace("symbol", "\u25A1");
 					if (docText != null) {
 						docText = replaceTextContract(docText);
 					}
@@ -130,6 +131,15 @@ public class OfficeController {
 			return text;
 		} else if (text.contains("${Answer}")) {
 			text = text.replace("${Answer}", "SH");
+			return text;
+		} else if (text.contains("${classic}")) {
+			text = text.replace("${classic}", "\u25A1");
+			return text;
+		} else if (text.contains("${gold}")) {
+			text = text.replace("${gold}", "\u25A1");
+			return text;
+		} else if (text.contains("${platinum}")) {
+			text = text.replace("${platinum}", "\u2713");
 			return text;
 		} else {
 			return text;
